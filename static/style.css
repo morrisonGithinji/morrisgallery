@@ -1,0 +1,12 @@
+p {
+    color: darkslategrey;
+  }
+  
+  .jumbotron{
+    background-color: wheat;
+    opacity: 0.79;
+  }
+  
+  body{
+    background-color: rgb(211, 201, 193);
+  }
