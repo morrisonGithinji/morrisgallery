@@ -1,0 +1,90 @@
+{% load static%}
+{%include 'base.html'%}
+
+
+{%block styles%}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+{%endblock%}
+
+
+{%block content%}
+ <div class="container">
+  <p class="jumbotron text-center">May my gallery put a smile on you, enjoy the photos </p>
+
+    
+    <div class="row">
+      {%for image in images%}
+      <div class="col-md-3">
+        <img src="{{image.image.url}}" class="img-thumbnail" data-toggle="modal" data-target="#modalQuickView{{image.id}}">
+        <!-- Modal: modalQuickView -->
+        <div class="modal fade" id="modalQuickView{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="row">
+                  
+                  <div class="col-lg-5">
+                    <!--Carousel Wrapper-->
+                    <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails"
+                      data-ride="carousel">
+                      <img src="{{image.image.url}}" class="img-thumbnail img-fluid" alt="">
+        
+                    
+                    </div>
+                    <!--/.Carousel Wrapper-->
+                  </div>
+                  <div class="col-lg-7">
+                    <h2 class="h2-responsive product-name">
+                      <strong>Name: </strong>{{image.name}}
+                    </h2>
+                    <h4 class="h4-responsive">
+                      <span class="grey-text">
+                        <strong>Description: </strong><br>{{image.description}}
+                      </span>
+                    </h4>
+                    <h4 class="h4-responsive">
+                      <span class="grey-text">
+                        <strong>Category: </strong>{{image.category}}
+                      </span>
+                    </h4>
+                    <h4 class="h4-responsive">
+                      <span class="grey-text">
+                        <strong><i class="fas fa-map-marker-alt">Location: </i></strong>{{image.location}}
+                      </span>
+                    </h4>
+                    <br>
+
+                    <input type="text" value="{{image.image.url}}" id="{{image.id}}.url">
+                    <button class="btn" onclick="imLink('{{image.id}}.url')">Copy text</button>
+                      </div>
+                    
+                     
+                      </div>
+                      
+        
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+      </div>
+
+     {%endfor%}
+    </div>
+
+    <script>
+      function imLink(path) {
+        var copyText = document.getElementById(path);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        alert("Link Copied");
+      }
+      </script>
+        
+{%endblock%}
+
+
+
