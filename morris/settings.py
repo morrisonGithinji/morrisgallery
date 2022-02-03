@@ -16,6 +16,8 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 import  cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-@f0q6o0p(x889^2&sy09oohkwi03^7%fyrglmgxu#r#^vvl&4*'
-
+cloudinary.config( 
+  cloud_name = "chibah54", 
+  api_key = "478268632257722", 
+  api_secret = "pwGN0kAUp1DCXdQJAfi4_56L2zo" 
+)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
