@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Image,Category,Location
 from django.http import HttpResponse
 from django.http.response import Http404
-
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 def index(request):
   images= Image.get_all()
@@ -26,7 +26,7 @@ def search_results(request):
 def get_image_by_id(request,image_id):
   try:
     image= Image.objects.get(id=image_id)
-  except DoesNotExist:
+  except ObjectDoesNotExist:
     raise Http404()  
   return render(request,'display.html',{'image':image})
 
